@@ -1,15 +1,14 @@
 class SquirrelsController < ApplicationController
-  before_action :set_squirrel, only: [:show, :edit, :update, :destroy]
+  before_action :set_squirrel, only: %i[show edit update destroy]
 
   # GET /squirrels
   def index
     @q = Squirrel.ransack(params[:q])
-    @squirrels = @q.result(:distinct => true).page(params[:page]).per(10)
+    @squirrels = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   # GET /squirrels/1
-  def show
-  end
+  def show; end
 
   # GET /squirrels/new
   def new
@@ -17,15 +16,14 @@ class SquirrelsController < ApplicationController
   end
 
   # GET /squirrels/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /squirrels
   def create
     @squirrel = Squirrel.new(squirrel_params)
 
     if @squirrel.save
-      redirect_to @squirrel, notice: 'Squirrel was successfully created.'
+      redirect_to @squirrel, notice: "Squirrel was successfully created."
     else
       render :new
     end
@@ -34,7 +32,7 @@ class SquirrelsController < ApplicationController
   # PATCH/PUT /squirrels/1
   def update
     if @squirrel.update(squirrel_params)
-      redirect_to @squirrel, notice: 'Squirrel was successfully updated.'
+      redirect_to @squirrel, notice: "Squirrel was successfully updated."
     else
       render :edit
     end
@@ -43,17 +41,18 @@ class SquirrelsController < ApplicationController
   # DELETE /squirrels/1
   def destroy
     @squirrel.destroy
-    redirect_to squirrels_url, notice: 'Squirrel was successfully destroyed.'
+    redirect_to squirrels_url, notice: "Squirrel was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_squirrel
-      @squirrel = Squirrel.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def squirrel_params
-      params.require(:squirrel).permit(:name, :description, :age)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_squirrel
+    @squirrel = Squirrel.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def squirrel_params
+    params.require(:squirrel).permit(:name, :description, :age)
+  end
 end

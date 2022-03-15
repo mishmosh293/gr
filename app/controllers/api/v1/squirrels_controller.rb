@@ -13,7 +13,7 @@ class Api::V1::SquirrelsController < Api::V1::GraphitiController
     squirrel = SquirrelResource.build(params)
 
     if squirrel.save
-      render jsonapi: squirrel, status: 201
+      render jsonapi: squirrel, status: :created
     else
       render jsonapi_errors: squirrel
     end
@@ -33,7 +33,7 @@ class Api::V1::SquirrelsController < Api::V1::GraphitiController
     squirrel = SquirrelResource.find(params)
 
     if squirrel.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: squirrel
     end

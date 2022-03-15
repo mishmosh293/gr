@@ -9,5 +9,4 @@ class SquirrelResource < ApplicationResource
   # Direct associations
 
   # Indirect associations
-
 end

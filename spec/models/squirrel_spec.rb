@@ -1,18 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Squirrel, type: :model do
-  
-    describe "Direct Associations" do
+  describe "Direct Associations" do
+  end
 
-    end
+  describe "InDirect Associations" do
+  end
 
-    describe "InDirect Associations" do
-
-    end
-
-    describe "Validations" do
-
-    it { should validate_numericality_of(:age).is_greater_than_or_equal_to(0) }
-
-    end
+  describe "Validations" do
+    it {
+      should validate_numericality_of(:age).is_greater_than_or_equal_to(0)
+    }
+  end
 end
