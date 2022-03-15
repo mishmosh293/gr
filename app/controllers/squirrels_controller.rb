@@ -3,7 +3,8 @@ class SquirrelsController < ApplicationController
 
   # GET /squirrels
   def index
-    @squirrels = Squirrel.page(params[:page]).per(10)
+    @q = Squirrel.ransack(params[:q])
+    @squirrels = @q.result(:distinct => true).page(params[:page]).per(10)
   end
 
   # GET /squirrels/1
