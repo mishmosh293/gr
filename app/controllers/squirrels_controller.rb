@@ -3,7 +3,7 @@ class SquirrelsController < ApplicationController
 
   # GET /squirrels
   def index
-    @squirrels = Squirrel.all
+    @squirrels = Squirrel.page(params[:page]).per(10)
   end
 
   # GET /squirrels/1

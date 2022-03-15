@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @squirrels, partial: "list_item", as: :squirrel %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @squirrels, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>
